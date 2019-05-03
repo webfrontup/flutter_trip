@@ -32,3 +32,8 @@ Because flutter_gallery requires SDK version >=2.2.0 <3.0.0, version solving fai
 ```
 依次执行这两个命令 `flutter channel master` `flutter upgrade`
 
+### 构建布局
+- https://flutterchina.club/tutorials/layout/#step-0
+
+
+
