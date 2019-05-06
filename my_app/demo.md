@@ -94,6 +94,22 @@ var myList = [1,2,3]: 对List直接赋值。
 - CrossAxisAlignment.center：居中对齐。
 - mainAxisAlignment: MainAxisAlignment.center：主轴对齐。
 
+### Stack层叠布局
+- alignment属性是控制层叠的位置的，建议在两个内容进行层叠时使用。它有两个值X轴距离和Y轴距离，值是从0到1的，都是从上层容器的左上角开始算起的。
+
+### CircleAvatar组件的使用
+- CircleAvatar这个经常用来作头像的，组件里边有个radius的值可以设置图片的弧度。
+
+### Stack的Positioned属性
+- bottom: 距离层叠组件下边的距离
+- left：距离层叠组件左边的距离
+- top：距离层叠组件上边的距离
+- right：距离层叠组件右边的距离
+- width: 层叠定位组件的宽度
+- height: 层叠定位组件的高度
+
+
+
 
 
 

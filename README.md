@@ -35,5 +35,6 @@ Because flutter_gallery requires SDK version >=2.2.0 <3.0.0, version solving fai
 ### 构建布局
 - https://flutterchina.club/tutorials/layout/#step-0
 
-
+### 撤销远端提交
+- git push origin <分支名> --force
 
