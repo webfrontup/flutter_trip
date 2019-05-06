@@ -78,5 +78,22 @@ var myList = [1,2,3]: 对List直接赋值。
 - crossAxisCount:网格的列数，相当于一行放置的网格数量。
 - childAspectRatio:宽高比，这个值的意思是宽是高的多少倍，如果宽是高的2倍，那我们就写2.0，如果高是宽的2倍，我们就写0.5。希望小伙伴们理解一下。
 
+### 水平布局Row的使用
+- Row控件可以分为灵活排列和非灵活排列两种
+
+### Button
+    https://blog.csdn.net/yuzhiqiang_1993/article/details/85004313
+- RaisedButton ：凸起的按钮，其实就是Android中的Material Design风格的Button ，继承自MaterialButton
+- FlatButton ：扁平化的按钮，继承自MaterialButton
+- OutlineButton	：带边框的按钮，继承自MaterialButton
+- IconButton	：图标按钮,继承自StatelessWidget
+
+### Column基本用法
+- CrossAxisAlignment.star：居左对齐。
+- CrossAxisAlignment.end：居右对齐。
+- CrossAxisAlignment.center：居中对齐。
+- mainAxisAlignment: MainAxisAlignment.center：主轴对齐。
+
+
 
 

@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget{
 //              Text('I am JSPang'),
 //              Text('my website is jspang.com'),
 //              Text('I love coding')
-              Center(child:Text('I am JSPang')),
-              Expanded(child:Center(child:Text('my website is jspang.com'))),
-              Center(child:Text('I love coding'))
+                Center(child:Text('I am JSPang')),
+                Expanded(child:Center(child:Text('my website is jspang.com'))),
+                Center(child:Text('I love coding'))
             ],
           )
       ),
