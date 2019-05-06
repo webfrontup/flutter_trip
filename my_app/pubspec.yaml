@@ -42,7 +42,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - data_repo/img/ic_launcher.png
     - data_repo/img/social/facebook.png
     - data_repo/img/social/instagram.png
     - data_repo/img/social/google_plus.png
