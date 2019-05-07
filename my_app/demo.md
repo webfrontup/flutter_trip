@@ -108,6 +108,83 @@ var myList = [1,2,3]: 对List直接赋值。
 - width: 层叠定位组件的宽度
 - height: 层叠定位组件的高度
 
+### RaisedButton按钮组件
+- child：可以放入容器，图标，文字。让你构建多彩的按钮。
+- onPressed：点击事件的相应，一般会调用Navigator组件。
+
+### Navigator.push 和 Navigator.pop
+- Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
+- Navigator.pop：是返回到上一个页面，使用时传递一个context（上下文）参数，使用时要注意的是，你必须是有上级页面的，也就是说上级页面使用了Navigator.push。
+- 使用路由MaterialPageRoute传递参数
+```dart
+    Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder:(context)=>new ProductDetail(product:products[index])
+      )
+    );
+```
+- 返回数据的方式 返回数据只要在返回时带第二个参数就可以了。
+```dart
+ Navigator.pop(context,'xxxx');  //xxx就是返回的参数
+```
+
+### Awesome Flutter snippets组件的使用
+- stlss: StatelessWidget
+- stful: StatefulWidget
+
+
+### 异步请求和等待
+```dart
+    _navigateToXiaoJieJie(BuildContext context) async{ //async是启用异步方法
+    
+        final result = await Navigator.push(//等待
+          context, 
+          MaterialPageRoute(builder: (context)=> XiaoJieJie())
+          );
+          
+          Scaffold.of(context).showSnackBar(SnackBar(content:Text('$result')));
+      }
+    }
+```
+
+### SnackBar的使用
+    SnackBar是用户操作后，显示提示信息的一个控件，类似Tost，会自动隐藏。SnackBar是以Scaffold的showSnackBar方法来进行显示的。
+```dart
+  Scaffold.of(context).showSnackBar(SnackBar(content:Text('$result')));
+```
+
+> Flutter客户端打包 
+### 配置APP的图标
+> 找到目录：项目根目录/android/app/src/main/res/ 
+> 进入之后你会看到很多mipmap-为前缀命名的文件夹，后边的是像素密度，可以看出图标的分辨率。
+- mdpi (中) ~160dpi
+- hdpi （高） ~240dip
+- xhdpi （超高） ~320dip
+- xxhdpi （超超高） ~480dip
+- xxxhdpi （超超超高） ~640dip
+- 将对应像素密度的图片放入对应的文件夹中,图片记得用png格式，记得名字要统一，才能一次性进行配置。
+### AndroidManifest.xml 文件
+这个文件主要用来配置APP的名称、图标和系统权限，所在的目录在:
+>项目根目录/android/app/src/main/AndroidManifest.xml
+```dart
+android:label="flutter_app"   //配置APP的名称，支持中文
+android:icon="@mipmap/ic_launcher" //APP图标的文件名称
+```
+- 更多细节 https://jspang.com/posts/2019/02/01/flutter-base4.html
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
