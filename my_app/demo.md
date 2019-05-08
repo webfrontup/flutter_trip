@@ -214,19 +214,117 @@ theme: ThemeData(
 - curve: 设置动画的节奏，也就是常说的曲线，Flutter准备了很多节奏，通过改变动画取消可以做出很多不同的效果。
 - transitionDuration：设置动画持续的时间，建议再1和2之间。
 
+### 背景滤镜组件 制作毛玻璃 
+    BackdropFilter就是背景滤镜组件，使用它可以给父元素增加滤镜效果
 
+### With 关键字的使用
+    with是dart的关键字，意思是混入的意思，就是说可以将一个或者多个类的功能添加到自己的类无需继承这些类， 避免多重继承导致的问题。
+```dart
+  class _KeepAliveDemoState extends State<KeepAliveDemo> with SingleTickerProviderStateMixin {}
+```
+### TabBar Widget的使用
+    TabBar是切换组件，它需要设置两个属性。
+- controller: 控制器，后边跟的多是TabController组件。
+- tabs：具体切换项，是一个数组，里边放的也是Tab Widget。
+```dart
+    bottom:TabBar(
+      controller: _controller,
+      tabs:[
+        Tab(icon:Icon(Icons.directions_car)),
+        Tab(icon:Icon(Icons.directions_transit)),
+        Tab(icon:Icon(Icons.directions_bike)),
+      ],
+    )
+```
+## 一个不简单的搜索条
 
+### 数据文件 asset.dart
+    asset.dart相当于数据文件，工作中这些数据是后台传递给我们，
+    或者写成配置文件的，这里我们就以List的方式代替了。我们在这个文件中定义了两个List：
+- searchList : 这个相当于数据库中的数据，我们要在这里进行搜索。
+- recentSuggest ： 目前的推荐数据，就是搜索时，自动为我们进行推荐。 
+  
+```dart
+    const searchList = [
+      "jiejie-大长腿",
+      "jiejie-水蛇腰",
+      "gege1-帅气欧巴",
+      "gege2-小鲜肉"
+    ];
+    
+    const recentSuggest = [
+      "推荐-1",
+      "推荐-2"
+    ];
 
+```
 
+### 重写buildActions方法：
+    buildActions方法时搜索条右侧的按钮执行方法，我们在这里方法里放入一个clear图标。
+```dart
+  @override
+  List<Widget> buildActions(BuildContext context){
+    return [
+      IconButton(
+        icon:Icon(Icons.clear),
+        onPressed: ()=>query = "",)
+      ];
+  }
+```
 
-
-
-
-
-
-
-
-
+### buildLeading 方法重写
+    这个时搜索栏左侧的图标和功能的编写，这里我们才用AnimatedIcon，然后在点击时关闭整个搜索页面，代码如下。
+```dart
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+        icon: AnimatedIcon(
+            icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+        onPressed: () => close(context, null));
+  }
+```
+### buildResults方法重写
+    buildResults方法，是搜到到内容后的展现。
+```dart
+    @override
+      Widget buildResults(BuildContext context) {
+        return Container(
+          width: 100.0,
+          height: 100.0,
+          child: Card(
+            color: Colors.redAccent,
+            child: Center(
+              child: Text(query),
+            ),
+          ),
+        );
+      }
+```
+### buildSuggestions方法重写
+    这个方法主要的作用就是设置推荐，就是我们输入一个字，然后自动为我们推送相关的搜索结果
+```dart
+@override
+  Widget buildSuggestions(BuildContext context) {
+    final suggestionList = query.isEmpty
+        ? recentSuggest
+        : searchList.where((input) => input.startsWith(query)).toList();
+    return ListView.builder(
+        itemCount: suggestionList.length,
+        itemBuilder: (context, index) => ListTile(
+              title: RichText(
+                  text: TextSpan(
+                      text: suggestionList[index].substring(0, query.length),
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                      children: [
+                    TextSpan(
+                        text: suggestionList[index].substring(query.length),
+                        style: TextStyle(color: Colors.grey))
+                  ])),
+            ));
+  }
+}
+```
 
 
 
