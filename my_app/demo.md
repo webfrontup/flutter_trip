@@ -176,6 +176,46 @@ android:icon="@mipmap/ic_launcher" //APP图标的文件名称
 
 
 
+### 自定义主题样本
+> primarySwatch ：现在支持18种主题样本了。
+```dart
+theme: ThemeData(
+  primarySwatch: Colors.lightBlue,
+),
+```
+### floatingActionButton 可交互的浮动按钮
+```dart
+    floatingActionButton: FloatingActionButton(
+      // 点击相应事件，最常用的一个属性。
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context){
+            return EachView('New Page');
+          }));
+        },
+        // tooltip：长按显示的提示文字，因为一般只放一个图标在上面
+        tooltip: 'Increment',
+        // child ：放置子元素，一般放置Icon Widget。
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
+// 和底栏进行融合 floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+```
+### BottomAppBar 底部工具栏
+    可以放置文字和图标，当然也可以放置容器。
+- color: 底部工具栏的颜色。
+- shape：设置底栏的形状，一般使用这个都是为了和floatingActionButton融合，所以使用的值都是CircularNotchedRectangle(),有缺口的圆形矩形。
+- child ：里边可以放置大部分Widget，让我们随心所欲的设计底栏。
+
+### 自定义CustomRoute Widget
+- FadeTransition:渐隐渐现过渡效果，主要设置opactiy（透明度）属性，值是0.0-1.0。
+- animate :动画的样式，一般使用动画曲线组件（CurvedAnimation）。
+- curve: 设置动画的节奏，也就是常说的曲线，Flutter准备了很多节奏，通过改变动画取消可以做出很多不同的效果。
+- transitionDuration：设置动画持续的时间，建议再1和2之间。
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bottom_navigation_widget.dart';
+import 'package:my_app/20demos/2.bottomNavigationBar/bottom_navigation_widget.dart';
 
 void main()=> runApp(new MyApp());
 
