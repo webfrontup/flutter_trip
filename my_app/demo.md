@@ -326,5 +326,112 @@ theme: ThemeData(
 }
 ```
 
+### mediaQuery 媒体查询
+    使用meidaQuery可以很容易的得到屏幕的宽和高，得到宽和高的代码如下：
+```dart
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+```
+
+### GestureDetector 手势操作
+    
+    GestureDetector它式一个Widget，但没有任何的显示功能，而只是一个手势操作，用来触发事件的。
+    虽然很多Button组件是有触发事件的，比如点击，但是也有一些组件是没有触发事件的，
+    比如：Padding、Container、Center这时候我们想让它有触发事件就需要再它们的外层增加一个GestureDetector，
+    比如我们让Padding有触发事件，代码如下：
+```dart
+    Widget buildAddButton(){
+        return  GestureDetector(
+          onTap:(){
+            if(list.length<9){
+              setState(() {
+                    list.insert(list.length-1,buildPhoto());
+              });
+            }
+          },
+          child: Padding(
+            padding:const EdgeInsets.all(8.0),
+            child: Container(
+              width: 80.0,
+              height: 80.0,
+              color: Colors.black54,
+              child: Icon(Icons.add),
+            ),
+          ),
+        );
+      }
+```
+
+### ExpansionTile组件
+    ExpansionTile Widget就是一个可以展开闭合的组件，常用的属性有如下几个。
+- title:闭合时显示的标题，这个部分经常使用Text Widget。
+- leading:标题左侧图标，多是用来修饰，让界面显得美观。
+- backgroundColor: 展开时的背景颜色，当然也是有过度动画的，效果非常好。
+- children: 子元素，是一个数组，可以放入多个元素。
+- trailing ： 右侧的箭头，你可以自行替换但是我觉的很少替换，因为谷歌已经表现的很完美了。
+- initiallyExpanded: 初始状态是否展开，为true时，是展开，默认为false，是不展开。
+
+### ExpansionPanelList 常用属性
+- expansionCallback:点击和交互的回掉事件，有两个参数，第一个是触发动作的索引，第二个是布尔类型的触发值。
+- children:列表的子元素，里边多是一个List数组。
+
+### ExpandStateBean 自定义类
+为了方便管理制作了一个ExpandStateBean类，里边就是两个状态，一个是是否展开isOpen,另一个索引值。代码如下:
+```dart
+    class ExpandStateBean{
+      var isOpen;
+      var index;
+      ExpandStateBean(this.index,this.isOpen);
+    }
+
+```
+
+### 去掉DeBug图标
+```dart
+  debugShowCheckedModeBanner: false,
+```
+
+### ClipPath 路径裁切控件
+    clipPath控件可以把其内部的子控件切割，它有两个主要属性（参数）:
+- child :要切割的元素，可以是容器，图片.....
+- clipper :切割的路径，这个要和CustomClipper对象配合使用。
+- 在Scaffold里放置了一个列容器，然后把ClipPath控件放到了里边，ClipPath的子元素是一个容器控件Container。
+    BootomClipper是我们自定义的一个对象，里边主要就是切割的路径。
+
+  
+```dart
+    import 'package:flutter/material.dart';
+    
+    class HomePage extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body:Column(
+            children: <Widget>[
+              ClipPath(
+                clipper:BottomClipper(),
+                child: Container(
+                  color:Colors.deepPurpleAccent,
+                  height: 200.0,
+                ),
+              )
+            ],
+          )
+        );
+      }
+    }
+```
+
+### CustomClipper 裁切路径
+```dart
+    class BottomClipperTest extends CustomClipper<Path>{}
+```
+
+
+
+
+
+
+
 
 
