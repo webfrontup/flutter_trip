@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget{
 
       children: <Widget>[
         new CircleAvatar(
-          backgroundImage: new NetworkImage('http://jspang.com/static//myimg/blogtouxiang.jpg'),
+          backgroundImage: new NetworkImage('http://jspang.com/static/myimg/blogtouxiang.jpg'),
           radius: 100.0,
         ),
         new Positioned(

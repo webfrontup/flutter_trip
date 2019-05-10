@@ -427,6 +427,84 @@ theme: ThemeData(
     class BottomClipperTest extends CustomClipper<Path>{}
 ```
 
+### AnimationController 
+    AnimationController是Animation的一个子类，它可以控制Animation, 也就是说它是来控制动画的，比如说控制动画的执行时间。
+- vsync:this :垂直同步设置，使用this就可以了。
+- duration : 动画持续时间，这个可以使用seconds秒，也可以使用milliseconds毫秒，工作中经常使用毫秒
+
+- 设置一个动画控制器，这个动画控制器控制动画执行时间是3000毫秒。然后我们设置了一段动画，动画使用了动画控制器的约定。
+```dart
+    _controller = AnimationController(vsync:this,duration:Duration(milliseconds:3000));
+    _animation = Tween(begin: 0.0,end:1.0).animate(_controller);
+```
+
+### animation.addStatusListener
+    动画事件监听器，它可以监听到动画的执行状态，我们这里只监听动画是否结束，如果结束则执行页面跳转动作
+- AnimationStatus.completed:表示动画已经执行完毕。
+- pushAndRemoveUntil:跳转页面，并销毁当前控件。
+```dart
+    _animation.addStatusListener((status){
+      if(status == AnimationStatus.completed){
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context)=>MyHomePage()), 
+          (route)=> route==null);
+      }
+    });
+```
+
+### Cupertino UI
+    Flutter有两套UI模板，一套是material,另一套就是Cupertino。
+    Cupertino主要针对的的就是IOS系统的UI，所以用的右滑返回上一级就是在这个Cupertino里。
+- Cupertino的引入方法: `import 'package:flutter/cupertino.dart';`
+
+### CupertinoPageScaffold
+    这个和以前使用material的Scaffold类似，不过他里边的参数是child
+
+### 轻量级操作提示
+    Flutter中有很多提示控件,比如Dialog、Snackbar和BottomSheet这些操作都是比较重量级的，存在屏幕上的时间较长或者会直接打断用户的操作。
+    Tooltip是继承于StatefulWidget的一个Widget，它并不需要调出方法，当用户长按被Tooltip包裹的Widget时，会自动弹出相应的操作提示。
+
+### Draggable控件实例
+    Draggable控件负责就是拖拽，父层使用了Draggable，它的子元素就是可以拖动的，子元素可以实容器，可以是图片。
+- data: 是要传递的参数，在DragTarget里，会接受到这个参数。当然要在拖拽控件推拽到DragTarget的时候。
+- child:在这里放置你要推拽的元素，可以是容器，也可以是图片和文字。
+- feedback: 常用于设置推拽元素时的样子，在案例中当推拽的时候，我们把它的颜色透明度变成了50%。当然你还可以改变它的大小。
+- onDraggableCanceled:是当松开时的相应事件，经常用来改变推拽时到达的位置，改变时用setState来进行。
+```dart
+    Draggable(
+      data:widget.widgetColor,
+      child: Container(
+        width: 100,
+        height: 100,
+        color:widget.widgetColor,
+      ),
+      feedback:Container(
+        width: 100.0,
+        height: 100.0,
+        color: widget.widgetColor.withOpacity(0.5),
+      ),
+      onDraggableCanceled: (Velocity velocity, Offset offset){
+        setState(() {
+          this.offset = offset;
+        });
+      },
+```
+### DragTarget Widget
+    DragTarget是用来接收拖拽事件的控件，当把Draggable放到DragTarget里时，他会接收Draggable传递过来的值，然后用生成器改变组件状态。
+- onAccept:当推拽到控件里时触发，经常在这里得到传递过来的值。
+- builder: 构造器，里边进行修改child值。
+
+```dart
+    DragTarget(onAccept: (Color color) {
+      _draggableColor = color;
+    }, builder: (context, candidateData, rejectedData) {
+      return Container(
+        width: 200.0,
+        height: 200.0,
+        color: _draggableColor,
+      );
+    }),
+```
 
 
 
