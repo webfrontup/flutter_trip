@@ -29,7 +29,12 @@ import 'single/SizedBox.dart';
 import 'single/SizedOverflowBox.dart';
 import 'single/Transform.dart';
 
-void main() => runApp(new MyApp());
+import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+
+void main() {
+  debugPaintSizeEnabled = true;      //打开视觉调试开关
+  runApp(MyApp());
+}
 
 const List<String> singleLayoutWidgets = [
   "Container",
