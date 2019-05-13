@@ -49,6 +49,7 @@ flutter:
     - data_repo/img/social/google_plus.png
     - data_repo/img/social/linkedin.png
     - data_repo/img/social/twitter.png
+    - images/pic.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
