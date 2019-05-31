@@ -39,3 +39,18 @@ Because flutter_gallery requires SDK version >=2.2.0 <3.0.0, version solving fai
 ### 撤销远端提交
 - git push origin <分支名> --force
 
+### Android Studio 快捷键技巧
+```dart
+class GridNavItem {
+    //选中之后 command+n 选择对应的选项
+  final String startColor;
+  final String endColor;
+  final CommonModel mainItem;
+  final CommonModel item1;
+  final CommonModel item2;
+  final CommonModel item3;
+  final CommonModel item4;
+    //选中之后 command+n 选择对应的选项    
+}
+``` 
+
