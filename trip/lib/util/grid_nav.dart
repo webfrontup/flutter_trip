@@ -44,7 +44,6 @@ class GridNav extends StatelessWidget {
     Color startColor = Color(int.parse('0xff${gridNavItem.startColor}'));
     Color endColor = Color(int.parse('0xff${gridNavItem.endColor}'));
 
-    print(gridNavItem.mainItem);
     items.add(_mainItem(context, gridNavItem.mainItem));
     items.add(_doubleItem(context, gridNavItem.item1, gridNavItem.item2));
     items.add(_doubleItem(context, gridNavItem.item3, gridNavItem.item4));

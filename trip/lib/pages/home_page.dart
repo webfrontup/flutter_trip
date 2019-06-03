@@ -5,16 +5,16 @@ import 'package:trip/model/common_model.dart';
 import 'package:trip/model/grid_nav_model.dart';
 import 'package:trip/model/home_model.dart';
 import 'package:trip/model/sales_box_model.dart';
-//import 'package:trip/pages/search_page.dart';
-//import 'package:trip/pages/speak_page.dart';
+import 'package:trip/pages/search_page.dart';
+import 'package:trip/pages/speak_page.dart';
 import 'package:trip/util/navigator_util.dart';
 import 'package:trip/widget/cached_image.dart';
 import 'package:trip/widget/grid_nav.dart';
 import 'package:trip/widget/loading_container.dart';
 import 'package:trip/widget/local_nav.dart';
-//import 'package:trip/widget/sales_box.dart';
-//import 'package:trip/widget/search_bar.dart';
-//import 'package:trip/widget/sub_nav.dart';
+import 'package:trip/widget/sales_box.dart';
+import 'package:trip/widget/search_bar.dart';
+import 'package:trip/widget/sub_nav.dart';
 import 'package:trip/widget/webview.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
@@ -80,19 +80,19 @@ class _HomePageState extends State<HomePage>
     return null;
   }
 
-//  //跳转搜索页面
-//  void _jumpToSearch() {
-//    NavigatorUtil.push(
-//        context,
-//        SearchPage(
-//          hint: SEARCH_BAR_DEFAULT_TEXT,
-//        ));
-//  }
-//
-//  //跳转语音识别页面
-//  void _jumpToSpeak() {
-//    NavigatorUtil.push(context, SpeakPage());
-//  }
+  //跳转搜索页面
+  void _jumpToSearch() {
+    NavigatorUtil.push(
+        context,
+        SearchPage(
+          hint: SEARCH_BAR_DEFAULT_TEXT,
+        ));
+  }
+
+  //跳转语音识别页面
+  void _jumpToSpeak() {
+    NavigatorUtil.push(context, SpeakPage());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage>
                         },
                         child: _listView,
                       ))),
-//              _appBar
+              _appBar
             ],
           )),
     );
@@ -141,55 +141,55 @@ class _HomePageState extends State<HomePage>
           padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
           child: GridNav(gridNav: gridNav),
         ),
-//        /*活动导航*/
-//        Padding(
-//          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
-//          child: SubNav(subNavList: subNavList),
-//        ),
-//        /*底部卡片*/
-//        Padding(
-//          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
-//          child: SalesBox(salesBox: salesBox),
-//        ),
+        /*活动导航*/
+        Padding(
+          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+          child: SubNav(subNavList: subNavList),
+        ),
+        /*底部卡片*/
+        Padding(
+          padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+          child: SalesBox(salesBox: salesBox),
+        ),
       ],
     );
   }
 
   /*自定义appBar*/
-//  Widget get _appBar {
-//    return Column(
-//      children: <Widget>[
-//        Container(
-//          decoration: BoxDecoration(
-//              gradient: LinearGradient(
-//                  colors: [Color(0x66000000), Colors.transparent],
-//                  begin: Alignment.topCenter,
-//                  end: Alignment.bottomCenter)),
-//          child: Container(
-//            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-//            height: 80,
-//            decoration: BoxDecoration(
-//                color:
-//                    Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255)),
-//            child: SearchBar(
-//              searchBarType: appBarAlpha > 0.2
-//                  ? SearchBarType.homeLight
-//                  : SearchBarType.home,
-//              inputBoxClick: _jumpToSearch,
-//              speakClick: _jumpToSpeak,
-//              defaultText: SEARCH_BAR_DEFAULT_TEXT,
-//              leftButtonClick: () {},
-//            ),
-//          ),
-//        ),
-//        Container(
-//          height: appBarAlpha > 0.2 ? 0.5 : 0,
-//          decoration: BoxDecoration(
-//              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 0.5)]),
-//        )
-//      ],
-//    );
-//  }
+  Widget get _appBar {
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Color(0x66000000), Colors.transparent],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter)),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            height: 80,
+            decoration: BoxDecoration(
+                color:
+                    Color.fromARGB((appBarAlpha * 255).toInt(), 255, 255, 255)),
+            child: SearchBar(
+              searchBarType: appBarAlpha > 0.2
+                  ? SearchBarType.homeLight
+                  : SearchBarType.home,
+              inputBoxClick: _jumpToSearch,
+              speakClick: _jumpToSpeak,
+              defaultText: SEARCH_BAR_DEFAULT_TEXT,
+              leftButtonClick: () {},
+            ),
+          ),
+        ),
+        Container(
+          height: appBarAlpha > 0.2 ? 0.5 : 0,
+          decoration: BoxDecoration(
+              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 0.5)]),
+        )
+      ],
+    );
+  }
 
   /*banner轮播图*/
   Widget get _banner {
