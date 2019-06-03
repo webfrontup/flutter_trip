@@ -104,20 +104,23 @@ class _WebViewState extends State<WebView> {
       backButtonColor = Colors.white;
     }
 
+    // '0xff' + statusBarColorStr
+    // 16进制阿尔法 + 颜色
     return Scaffold(
       body: Column(
         children: <Widget>[
           _appBar(
               Color(int.parse('0xff' + statusBarColorStr)), backButtonColor),
-          Expanded(
-            child: WebviewScaffold(
+          Expanded( // _appBar撑满整个页面
+            child: WebviewScaffold( // 内嵌 webview 页面
               url: widget.url,
               userAgent: 'null',
               //防止携程H5页面重定向到打开携程APP ctrip://wireless/xxx的网址
               withZoom: true,
               withLocalStorage: true,
-              hidden: true,
+              hidden: true, // 让原来的appbar影藏
               enableAppScheme: true,
+              // 初始化界面
               initialChild: Container(
                 color: Colors.white,
                 child: Center(
@@ -142,11 +145,11 @@ class _WebViewState extends State<WebView> {
     return Container(
       color: backgroundColor,
       padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
-      child: FractionallySizedBox(
-        widthFactor: 1,
+      child: FractionallySizedBox( // 撑够屏幕的宽度
+        widthFactor: 1, // 撑够屏幕的宽度
         child: Stack(
           children: <Widget>[
-            GestureDetector(
+            GestureDetector( // 返回按钮可以被点击
               onTap: () {
                 Navigator.pop(context);
               },
