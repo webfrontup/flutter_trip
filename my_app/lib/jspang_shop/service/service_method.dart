@@ -10,11 +10,13 @@ Future getHomePageContent() async{
     print('开始获取首页数据...............');
     Response response;
     Dio dio = new Dio();
-//    dio.options.contentType=ContentType.parse("application/json");
-//    var formData = {'lon':'115.02932','lat':'35.76189'};
+    dio.options.contentType=ContentType.parse("application/json");
+//    dio.options.contentType=ContentType.parse("application/x-www-urlencoded");
+    var formData = {'lon':'115.02932','lat':'35.76189'};
     response = await dio.get(
         servicePath['homePageContext'],
-        queryParameters:{'name':'aabb'}
+//        queryParameters: formData
+//        queryParameters:{'name':'aabb'}
     );
     if(response.statusCode==200){
       print('aaaaaa');

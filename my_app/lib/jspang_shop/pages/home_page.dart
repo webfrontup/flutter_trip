@@ -14,7 +14,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     getHomePageContent().then((val){
       setState(() {
-        homePageContent=val['data']['data'].toString();
+//        homePageContent=val['data']['data'].toString();
+        homePageContent=val['data'].toString();
       });
 
     });
