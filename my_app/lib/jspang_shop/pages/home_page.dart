@@ -34,10 +34,7 @@ class _HomePageState extends State<HomePage> {
           future:getHomePageContent(),
           builder: (context,snapshot){
             if(snapshot.hasData){
-              print(111);
-              print(snapshot);
               var data=json.decode(snapshot.data.toString());
-              print(222);
               print(data);
               List<Map> swiperDataList = (data['data']['slides'] as List).cast(); // 顶部轮播组件数
               return Column(
@@ -66,6 +63,9 @@ class SwiperDiy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+    print('设备宽度:${ScreenUtil.screenWidth}');
+    print('设备高度:${ScreenUtil.screenHeight}');
+    print('设备像素密度:${ScreenUtil.pixelRatio}');
     return Container(
       height: ScreenUtil().setHeight(333),
       width: ScreenUtil().setWidth(750),
