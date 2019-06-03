@@ -133,7 +133,7 @@ class PageViewDemo extends StatelessWidget {
       controller: PageController(
         initialPage: 1,
         keepPage: false,
-        viewportFraction: 0.85,
+        viewportFraction: 0.85, //展示口
       ),
       children: <Widget>[
         Container(
