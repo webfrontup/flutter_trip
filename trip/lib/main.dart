@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import './navigator/tab_navigator.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(FlutterShop());
 
-class MyApp extends StatelessWidget {
+class FlutterShop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
