@@ -13,7 +13,7 @@ class HomeDao {
     if (response.statusCode == 200) {
       Utf8Decoder utf8decoder = Utf8Decoder(); //fix中文乱码
       final result = json.decode(utf8decoder.convert(response.bodyBytes));
-      print(HomeModel.fromJson(result));
+//      print(HomeModel.fromJson(result));
       return HomeModel.fromJson(result);
     } else {
       throw Exception('Failed to load home_page.json');
